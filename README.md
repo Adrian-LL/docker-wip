@@ -39,8 +39,11 @@ docker-machine env | iex
 docker-machine ip
 ```
 
-## 2. Installing Jupyter - TBU
+## 2. Installing Jupyter - TBU (https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html)
+Example 2: This command pulls the jupyter/datascience-notebook image tagged 9b06df75e445 from Docker Hub if it is not already present on the local host. It then starts an ephemeral container running a Jupyter Notebook server and exposes the server on host port 10000. The command mounts the current working directory on the host as /home/jovyan/work in the container. The server logs appear in the terminal. Visiting http://<hostname>:10000/?token=<token> in a browser loads JupyterLab, where hostname is the name of the computer running docker and token is the secret token printed in the console. Docker destroys the container after notebook server exit, but any files written to ~/work in the container remain intact on the host.:
+
 ```ps
 docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home/jovyan/work jupyter/datascience-notebook
 ```
-See previous note about IP address, you have to run the browser with this IP address instead of `localhost` or `127.0.0.1`.
+### Remarks
+1. See previous note about IP address, you have to run the browser with this IP address instead of `localhost` or `127.0.0.1`.
