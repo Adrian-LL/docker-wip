@@ -53,7 +53,7 @@ hostPath:
 ```ps
 "C:\\temp\\soccerdb-pv"
 ```
-should be (note `host_mnt`)
+-- should be (note `host_mnt`) --
 ```ps
 "/host_mnt/c/temp/soccerdb-pv"
 ```
