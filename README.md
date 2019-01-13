@@ -14,8 +14,11 @@ The next one was not in the article above:
 ```ps
 choco install -y docker-compose
 ```
-> NOTE - all inside Powershell with administrative access
+> NOTE - all the commands are execute inside Powershell with administrative access
 
+By default the machines will be created in a folder `.docker` in `%USERPROFILE%`.
+
+To move on another disk create a junction first for `.docker` folder.
 Put whatever path you need. I used and external SSD.
 
 ```ps
