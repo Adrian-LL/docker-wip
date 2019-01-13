@@ -53,8 +53,14 @@ hostPath:
 ```ps
 "C:\\temp\\soccerdb-pv"
 ```
--- should be (note `host_mnt`) --
+~~should be (note `host_mnt`) ~~
+Actualy this is valid only if the mount point already exists. (i.e. `host_mnt/c/... etc`). 
+Otherwise it will create the mount point inside the VM, but will not be linked with the actual host machine.
 ```ps
 "/host_mnt/c/temp/soccerdb-pv"
 ```
-WIP - still after mounting the path is not writeable.
+~~WIP - still after mounting the path is not writeable.~~
+It seems that the VM is automatically mounting `C:\users` with 2 mounting points, that is `\c` and `\Users`.
+
+I tried fiddling with vmware `.vmx` file but what I managet was only to change `C:\users` with `D:\Users` - works for the moment, but I don't understand what's happening.
+
