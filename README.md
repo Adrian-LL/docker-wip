@@ -60,7 +60,27 @@ Otherwise it will create the mount point inside the VM, but will not be linked w
 "/host_mnt/c/temp/soccerdb-pv"
 ```
 ~~WIP - still after mounting the path is not writeable.~~
+
 It seems that the VM is automatically mounting `C:\users` with 2 mounting points, that is `\c` and `\Users`.
 
-I tried fiddling with vmware `.vmx` file but what I managet was only to change `C:\users` with `D:\Users` - works for the moment, but I don't understand what's happening.
+I tried fiddling with vmware `.vmx` file but what I managed was only to change `C:\users` with `D:\Users` - works for the moment, but I don't understand what's happening.
+
+See the line `sharedFolder.maxNum = "1"`. 
+
+Originally it was `sharedFolder.maxNum = "2"`, after I changed `C:` with `D:` it changed to `1`...
+
+I tried to add from the graphical interface of vmware workstation, but my changes in vmx file did not reflected in the VM.
+
+```bash
+sharedFolder0.present = "TRUE"
+sharedFolder0.enabled = "TRUE"
+sharedFolder0.readAccess = "TRUE"
+sharedFolder0.writeAccess = "TRUE"
+sharedFolder0.hostPath = "D:\Users\"
+sharedFolder0.guestName = "Users"
+sharedFolder0.expiration = "never"
+sharedFolder.maxNum = "1"
+floppy0.present = "FALSE"
+tools.upgrade.policy = "useGlobal"
+```
 
