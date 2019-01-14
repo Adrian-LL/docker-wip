@@ -29,8 +29,9 @@ cmd /c mklink /J $env:USERPROFILE\.docker D:\docker
 
 ```
 > NOTE(S)
-> * for some reason the windows ssh does not really work well, but `docker-machine` has a native ssh option, i.e. `--native-ssh`, so use it (you may have an error such as `Waiting for SSH to be available...` or `cannot establish SSH session(...)` or something like these
-> One will need usually more than one PS window, so be sure to run `docker-machine env | iex` in each new windows.
+> * For some reason the windows ssh does not really work , but `docker-machine` has a native ssh option, i.e. `--native-ssh`, so use it (you may have an error such as `Waiting for SSH to be available...` or `cannot establish SSH session(...)` or something like these.
+>
+> * One will need usually more than one PS window, so be sure to run `docker-machine env | iex` in each new windows.
 
 ```ps
 docker-machine --native-ssh create -d vmwareworkstation default
