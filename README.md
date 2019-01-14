@@ -135,6 +135,8 @@ docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v /Users:/home/jovyan/w
 ## Command line for creation of another machine with different resources
 
 According to https://github.com/pecigonzalo/docker-machine-vmwareworkstation
+
+For example, creating a machine named `dev` with 2 CPUs and 2048 MB of memory. 
 > NOTE - do not forget `--native-ssh`
 
 ```bash
