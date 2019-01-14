@@ -29,7 +29,7 @@ cmd /c mklink /J $env:USERPROFILE\.docker D:\docker
 
 ```
 > NOTE(S)
-> * for some reason the windows ssh does not really work well, but `docekr-machine` has a native ssh option, i.e. `--native-ssh`, so use it (you may have an error such as `Waiting for SSH to be available...` or `cannot establish SSH session(...)` or something like these
+> * for some reason the windows ssh does not really work well, but `docker-machine` has a native ssh option, i.e. `--native-ssh`, so use it (you may have an error such as `Waiting for SSH to be available...` or `cannot establish SSH session(...)` or something like these
 > One will need usually more than one PS window, so be sure to run `docker-machine env | iex` in each new windows.
 
 ```ps
@@ -65,7 +65,7 @@ docker-machine env | iex
 docker-machine stop
 ```
 
-## 2. Installing Jupyter - TBU (https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html)
+## 2. Installing and Running a Jupyter Stack - TBU (https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html)
 **Example 2:** 
 * This command pulls the jupyter/datascience-notebook image tagged 9b06df75e445 from Docker Hub if it is not already present on the local host. 
 * It then starts an *ephemeral* container running a Jupyter Notebook server and exposes the server on host port 10000. 
