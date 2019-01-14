@@ -28,7 +28,8 @@ mkdir D:\docker
 cmd /c mklink /J $env:USERPROFILE\.docker D:\docker
 
 ```
-> NOTE - the first command will not finish, so after the machine is started, hit `ctrl+c` and run the second command.
+> NOTE(S)
+> * for some reason the windows ssh does not really work well, but `docekr-machine` has a native ssh option, i.e. `--native-ssh`, so use it (you may have an error such as `Waiting for SSH to be available...` or `cannot establish SSH session(...)` or something like these
 > One will need usually more than one PS window, so be sure to run `docker-machine env | iex` in each new windows.
 
 ```ps
@@ -47,6 +48,17 @@ For some reason the Windows ssh did not worked...
 `default` is the name of the machine built above.
 ```bash
 docker-machine --native-ssh ssh default
+```
+
+### Daily starting routine:
+```bash
+docker-machine start
+# or better
+docker-machine --native-ssh start
+# after starting:
+docker-machine env | iex
+# when finishing work
+docker-machine stop
 ```
 
 ## 2. Installing Jupyter - TBU (https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html)
