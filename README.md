@@ -38,6 +38,7 @@ docker-machine env | iex
 
 ```
 
+## IP Address of the Virtual Machine
 > NOTE - because with this setup the docker engine run in a VM in vmware, the IP address of the machine is important.
 ```ps
 docker-machine ip
@@ -50,7 +51,10 @@ For some reason the Windows ssh did not worked...
 docker-machine --native-ssh ssh default
 ```
 
-### Daily starting routine:
+### Daily starting (and stopping) routine:
+See below. If you have multiple docker machines use the name of the respective machine. 
+Without parameters it will assume `default`.
+
 ```bash
 docker-machine start
 # or better
