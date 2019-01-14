@@ -65,7 +65,17 @@ docker-machine env | iex
 docker-machine stop
 ```
 
-## 2. Installing and Running a Jupyter Stack - TBU (https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html)
+## 2. Installing and Running a Jupyter Stack - TBU 
+
+### Read the docs...(https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html)
+
+### Get it from here https://hub.docker.com/r/jupyter/datascience-notebook
+### Install it
+```ps
+docker pull jupyter/datascience-notebook
+```
+Otherwise just run the command, if it nof found locally it will be downloaded.
+
 **Example 2:** 
 * This command pulls the jupyter/datascience-notebook image tagged 9b06df75e445 from Docker Hub if it is not already present on the local host. 
 * It then starts an *ephemeral* container running a Jupyter Notebook server and exposes the server on host port 10000. 
