@@ -136,6 +136,17 @@ docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v /Users:/home/jovyan/w
 
 According to https://github.com/pecigonzalo/docker-machine-vmwareworkstation
 
+Environment variables and default values:
+
+CLI option	Environment variable	Default
+--vmwareworkstation-boot2docker-url	WORKSTATION_BOOT2DOCKER_URL	Latest boot2docker url
+--vmwareworkstation-cpu-count	WORKSTATION_CPU_COUNT	1
+--vmwareworkstation-disk-size	WORKSTATION_DISK_SIZE	20000
+--vmwareworkstation-memory-size	WORKSTATION_MEMORY_SIZE	1024
+--vmwareworkstation-ssh-user	WORKSTATION_SSH_USER	docker
+--vmwareworkstation-ssh-password	WORKSTATION_SSH_PASSWORD	tcuser
+
+
 For example, creating a machine named `dev` with 2 CPUs and 2048 MB of memory. 
 > NOTE - do not forget `--native-ssh`
 
