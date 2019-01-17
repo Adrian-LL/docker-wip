@@ -1,4 +1,4 @@
-# docker-wip
+# docker-wip for Jupyter + Docker
 Work In Progress for Docker
 I intend to put here the steps for my docker setup in Windows 10 *without* using Docker for Windows (i.e. without using Hyper-V)
 ## 1. Installed according Stefan Scherer's recs (here: https://stefanscherer.github.io/yes-you-can-docker-on-windows-7/)
@@ -75,7 +75,12 @@ docker-machine stop
 ```ps
 docker pull jupyter/datascience-notebook
 ```
-Otherwise just run the command, if it nof found locally it will be downloaded.
+> Small update - maybe `jupyter\tensorflow-notebook` or (`jupyter\scipy-notebook` if tensorflow is not needed...)is better if one works with Python only. It seemed to me a little nimbler.
+> However, a container with more memory and cores is definitely needed.
+
+Otherwise just do `docker run` command, if it's not found locally it will be downloaded.
+
+
 
 **Example 2:** 
 * This command pulls the jupyter/datascience-notebook image tagged 9b06df75e445 from Docker Hub if it is not already present on the local host. 
