@@ -16,7 +16,7 @@ choco install -y docker-compose
 ```
 > NOTE - all the commands are execute inside Powershell with administrative access
 
-By default the machines will be created in a folder `.docker` in `%USERPROFILE%`.
+By default the machines will be created in a folder `.docker` in `$env:USERPROFILE` (if in Powershell, or `%USERPROFILE%` if in cmd).
 
 To move on another disk create a junction first for `.docker` folder.
 Put whatever path you need. I used and external SSD.
@@ -80,7 +80,7 @@ docker pull jupyter/datascience-notebook
 
 Otherwise just do `docker run` command, if it's not found locally it will be downloaded.
 
-
+### Again, RTFM
 
 **Example 2:** 
 * This command pulls the jupyter/datascience-notebook image tagged 9b06df75e445 from Docker Hub if it is not already present on the local host. 
@@ -92,6 +92,11 @@ Otherwise just do `docker run` command, if it's not found locally it will be dow
 ```ps
 docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home/jovyan/work jupyter/datascience-notebook
 ```
+If you want to run the image from docker and give `jovyan` sudo rights
+```ps
+docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -e GRANT_SUDO=yes --user root -v "$PWD":/home/jovyan/work jupyter/datascience-notebook
+```
+
 ### Remarks
 1. See previous note about IP address, you have to run the browser with this IP address instead of `localhost` or `127.0.0.1`. The command above works only if Docekr for Windows (via Hyper-V) is installed.
 2. Because we are running the docker machine in a VMware VM, the path to local drives is actually something like below (according to https://github.com/docker/for-win/issues/1669)
