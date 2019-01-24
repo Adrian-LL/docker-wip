@@ -1,25 +1,37 @@
 # docker-wip for Jupyter + Docker
-Work In Progress for Docker
-I intend to put here the steps for my docker setup in Windows 10 *without* using Docker for Windows (i.e. without using Hyper-V)
-## 1. Installed according Stefan Scherer's recs (here: https://stefanscherer.github.io/yes-you-can-docker-on-windows-7/)
+>Work In Progress for Docker
+
+>I intend to put here the steps I used for my docker setup in Windows 10 *without* using Docker for Windows (i.e. without using Hyper-V).
+
+> Using `docker-machine`
+## 1. Installed according Stefan Scherer's article (here: https://stefanscherer.github.io/yes-you-can-docker-on-windows-7/)
+My setup:
 * Windows 10 Pro
 * Vmware Workstation 15
 * NOT using Hyper-V (installed, but not enabled via bcedit)
+
+### Commands used:
+> NOTE - all the commands are execute inside `Powershell` with administrative access
 ```ps
 choco install -y docker
 choco install -y docker-machine
 choco install -y docker-machine-vmwareworkstation
 ```
-The next one was not in the article above:
+The next one was not in the article above, but is needed for more advanced setups:
 ```ps
 choco install -y docker-compose
 ```
-> NOTE - all the commands are execute inside Powershell with administrative access
 
-By default the machines will be created in a folder `.docker` in `$env:USERPROFILE` (if in Powershell, or `%USERPROFILE%` if in cmd).
+By default the machines will be created in a folder `.docker` in user profile home
 
+ * `$env:USERPROFILE` if in Powershell, 
+ * `%USERPROFILE%` if in cmd.
+
+### Move folder to another disk / location
 To move on another disk create a junction first for `.docker` folder.
-Put whatever path you need. I used and external SSD.
+Put whatever path you need. 
+
+I used and external SSD. The junction survives.
 
 ```ps
 docker-machine rm -f default
@@ -29,9 +41,9 @@ cmd /c mklink /J $env:USERPROFILE\.docker D:\docker
 
 ```
 > NOTE(S)
-> * For some reason the windows ssh does not really work , but `docker-machine` has a native ssh option, i.e. `--native-ssh`, so use it (you may have an error such as `Waiting for SSH to be available...` or `cannot establish SSH session(...)` or something like these.
+> * For some reason the windows `ssh` (based on open-ssh) does not really work , but `docker-machine` has a native ssh option, i.e. `--native-ssh`, so use it (you may have an error such as `Waiting for SSH to be available...` or `cannot establish SSH session(...)` or something like these.
 >
-> * More shells (or in this case Powershell windows) may be needed simultaneoussly. In that case be sure to run `docker-machine env | iex` in each new terminal window.
+> * More shells (or in this case Powershell windows) may be needed. In that case be sure to run `docker-machine env | iex` in each new terminal window.
 
 ```ps
 docker-machine --native-ssh create -d vmwareworkstation default
@@ -45,7 +57,7 @@ docker-machine env | iex
 docker-machine ip
 ```
 ### SSH into VM
-For some reason the Windows ssh did not worked...
+See the above remark about Windows ssh not working.
 
 `default` is the name of the machine built above.
 ```bash
@@ -57,8 +69,6 @@ See below. If you have multiple docker machines use the name of the respective m
 Without parameters it will assume `default`.
 
 ```bash
-docker-machine start
-# or better
 docker-machine --native-ssh start
 # after starting:
 docker-machine env | iex
@@ -68,37 +78,37 @@ docker-machine stop
 
 ## 2. Installing and Running a Jupyter Stack - TBU 
 
-### Read the docs...(https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html)
+### 1. Read the docs...(https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html)
 
-### Get it from here https://hub.docker.com/r/jupyter/datascience-notebook
-### Install it
+### 2. Get the desired stack from here, e.g. https://hub.docker.com/r/jupyter/datascience-notebook
+### 3. Install it
 ```ps
 docker pull jupyter/datascience-notebook
 ```
-> Small update - maybe `jupyter\tensorflow-notebook` or (`jupyter\scipy-notebook` if tensorflow is not needed...)is better if one works with Python only. It seemed to me a little nimbler.
-> However, a container with more memory and cores is definitely needed.
+> NOTE - `jupyter\tensorflow-notebook` or (`jupyter\scipy-notebook` if tensorflow is not needed...) is better if one works with Python only. It is a little nimbler.
+> However, a container with more memory and cores is definitely needed. I got errors even with 4 GB RAM and 4 cores,
 
-Otherwise just do `docker run` command, if it's not found locally it will be downloaded.
+Otherwise just do `docker run` command, if the stack is not found locally the `latest` image will be downloaded.
 
 ### Again, RTFM
 
 **Example 2:** 
-* This command pulls the jupyter/datascience-notebook image tagged 9b06df75e445 from Docker Hub if it is not already present on the local host. 
+* This command pulls the `jupyter/datascience-notebook` image tagged `9b06df75e445` from Docker Hub if it is not already present on the local host. 
 * It then starts an *ephemeral* container running a Jupyter Notebook server and exposes the server on host port 10000. 
-* The command mounts the current working directory on the host as /home/jovyan/work in the container. 
+* The command mounts the current working directory on the host as `/home/jovyan/work` in the container. 
 * The server logs appear in the terminal. 
-* Visiting http://<hostname>:10000/?token=<token> in a browser loads JupyterLab, where hostname is the name of the computer running docker and token is the secret token printed in the console. Docker destroys the container after notebook server exit, but any files written to ~/work in the container remain intact on the host.:
+* Visiting http://<hostname>:10000/?token=<token> in a browser loads JupyterLab, where hostname is the name of the computer running docker and token is the secret token printed in the console. Docker destroys the container after notebook server exit, but any files written to `~/work` in the container remain intact on the host.:
 
 ```ps
 docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home/jovyan/work jupyter/datascience-notebook
 ```
-If you want to run the image from docker and give `jovyan` sudo rights
+If you want to run the image from docker and give `jovyan` sudo rights.
 ```ps
 docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -e GRANT_SUDO=yes --user root -v "$PWD":/home/jovyan/work jupyter/datascience-notebook
 ```
 
 ### Remarks
-1. See previous note about IP address, you have to run the browser with this IP address instead of `localhost` or `127.0.0.1`. The command above works only if Docekr for Windows (via Hyper-V) is installed.
+1. See previous note about IP address, you have to run the browser with this IP address instead of `localhost` or `127.0.0.1`. Running with `localhost` works only if Docker for Windows (via Hyper-V) is installed. See below.
 2. Because we are running the docker machine in a VMware VM, the path to local drives is actually something like below (according to https://github.com/docker/for-win/issues/1669)
 
 hostPath:
@@ -142,7 +152,14 @@ So my command was something like below:
 ```ps
 docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v /Users:/home/jovyan/work jupyter/datascience-notebook
 ```
+or
+```ps
+docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v /Users:/home/jovyan/work jupyter/tensorflow-notebook
+```
+> Note that `/Users` in the commands above point to `D:\Users` or whatever was configured in `/vmx` file. For example, if in configuration you put `D:\Users\Adrian\Documents` in `.vmx` (and the mounting is successful) you cannot move above this folder. Inside docker you will have the contents of `Documents` under `work`.
+
 ## Command line for creation of another machine with different resources
+As told above, for intensive processing more memory and more cores are needed.
 
 According to https://github.com/pecigonzalo/docker-machine-vmwareworkstation
 
@@ -158,9 +175,9 @@ CLI option	    Environment variable	    Default
 --vmwareworkstation-ssh-password	WORKSTATION_SSH_PASSWORD	tcuser
 ```
 
-For example, creating a machine named `dev` with 2 CPUs and 2048 MB of memory. 
+For example, creating a machine named `dev` with 2 CPUs and 4096 MB of memory. 
 > NOTE - do not forget `--native-ssh`
 
 ```bash
-docker-machine --native-ssh create --driver=vmwareworkstation --vmwareworkstation-cpu-count 2 --vmwareworkstation-memory-size 2048 dev
+docker-machine --native-ssh create --driver=vmwareworkstation --vmwareworkstation-cpu-count 2 --vmwareworkstation-memory-size 4096 dev
 ```
