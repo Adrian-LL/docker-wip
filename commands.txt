@@ -1,0 +1,25 @@
+# Create a new machine, with 8 CPUs, 24 GBi RAM and 40 GBi HDD
+
+docker-machine --native-ssh create --driver=vmwareworkstation --vmwareworkstation-cpu-count 8 --vmwareworkstation-disk-size 40960 --vmwareworkstation-memory-size 24576 tensor
+
+# # kaggle/python image - from the original documentation
+docker run -v $PWD:/tmp/working -w=/tmp/working -p 8888:8888 --rm -it kaggle/python jupyter notebook --no-browser --ip="0.0.0.0" --notebook-dir=/tmp/working/src
+
+# jupyterlab from original documentation
+docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home/jovyan/work jupyter/datascience-notebook
+
+# jupyterlab tensorflow for my setup
+docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v /Users/aludo:/home/jovyan/work jupyter/tensorflow-notebook
+
+# kaggle/python image - too bad it is not working
+docker run -v /Users/aludo:/tmp/working -w=/tmp/working -p 10000:8888 --rm -it kaggle/python jupyter notebook --no-browser --ip="0.0.0.0" --notebook-dir=/tmp/working/src
+
+
+# tensorflow/tensorflow image
+docker run -it --rm -v /Users/aludo:/home/aludo -w /home/aludo -p 10000:8888 tensorflow/tensorflow:latest-py3-jupyter
+
+# start a bash shell session within a tensorflow configured container. No folders mounted
+docker run -it tensorflow/tensorflow:latest-py3-jupyter bash
+
+# start a bash shell session within a tensorflow configured container. Users folders mounted
+docker run -it -v /Users/aludo:/home/aludo -w /home/aludo tensorflow/tensorflow:latest-py3-jupyter bash
