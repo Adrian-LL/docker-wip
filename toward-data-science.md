@@ -33,7 +33,10 @@ Status: Downloaded newer image for evheniy/docker-data-science:latest
 ### 2nd Option - build image locally starting with given Dockerfile
 The file is pretty simple and easy to understand. See more at the links above in References.
 
-Runs as root, so easy to install additional Ubuntu or Python packages during work.
+The configuration below runs as `root`, so it's easy to install additional Ubuntu or Python packages during work.
+
+Packages can be added and/or removed based on needs.
+For example emacs is included.
 
 #### TO DO:
 * fiddle a little with terminal in Jupyter.
@@ -109,4 +112,10 @@ docker run --name toward-data-science -p 8888:8888 --env="DISPLAY" -v "$PWD/note
 ```
 * This assumes that a folder `notebook` exists in the working directory.
 * The command line options and ports can be modified. Read docker command reference. See also the previous `.md` file.
-* If run with `docker-machine` the actual IP of the virtual machine should be used (from `docker machine env` command). Otherwise it will run on `localhost`.
+* If run with `docker-machine` the actual IP of the virtual machine should be used (from `docker machine env` command). Otherwise it will run on `localhost`. Also `--env="DISPLAY"` may be dropped in this case.
+
+My actual command:
+```bash
+ docker run  -it -p 10000:8888  -v "/Users:/home/ubuntu/notebooks"  -d toward-data-science
+```
+The local directory should be previously mounted in the VM. Stefan setup uses `C:\Users` as default.
