@@ -97,3 +97,32 @@ docker tag <image> username/repository:tag  # Tag <image> for upload to registry
 docker push username/repository:tag            # Upload tagged image to registry
 docker run username/repository:tag                   # Run image from a registry
 ```
+
+## 4. Command line for creation of another machine with different resources
+As told above, for intensive processing more memory and more cores are needed.
+
+According to https://github.com/pecigonzalo/docker-machine-vmwareworkstation
+
+Environment variables and default values:
+
+```
+CLI option	                        Environment variable	        Default
+--vmwareworkstation-boot2docker-url	WORKSTATION_BOOT2DOCKER_URL	Latest boot2docker url
+--vmwareworkstation-cpu-count	        WORKSTATION_CPU_COUNT	        1
+--vmwareworkstation-disk-size	        WORKSTATION_DISK_SIZE	        20000
+--vmwareworkstation-memory-size	        WORKSTATION_MEMORY_SIZE	        1024
+--vmwareworkstation-ssh-user	        WORKSTATION_SSH_USER	        docker
+--vmwareworkstation-ssh-password	WORKSTATION_SSH_PASSWORD	tcuser
+```
+
+For example, creating a machine named `dev` with 2 CPUs and 4096 MB of memory. 
+> NOTE - do not forget `--native-ssh`
+
+```bash
+docker-machine --native-ssh create --driver=vmwareworkstation --vmwareworkstation-cpu-count 2 --vmwareworkstation-memory-size 4096 dev
+```
+And more useful (at least for Jupyter and tensorflow) a machine named `tensor` with 8 CPU, 24 GiB RAM and 40 GiB disk space:
+```bash
+docker-machine --native-ssh create --driver=vmwareworkstation --vmwareworkstation-cpu-count 8 --vmwareworkstation-disk-size 40960 --vmwareworkstation-memory-size 24576 tensor
+```
+> NOTE - a machine named `default` (if exists) is launched when `docker-machine start` command is used without parameters.

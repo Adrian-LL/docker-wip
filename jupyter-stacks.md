@@ -82,26 +82,3 @@ docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v /Users:/home/jovyan/w
 ```
 > Note that `/Users` in the commands above point to `D:\Users` or whatever was configured in `/vmx` file. For example, if in configuration you put `D:\Users\Adrian\Documents` in `.vmx` (and the mounting is successful) you cannot move above this folder. Inside docker you will have the contents of `Documents` under `work`.
 
-## Command line for creation of another machine with different resources
-As told above, for intensive processing more memory and more cores are needed.
-
-According to https://github.com/pecigonzalo/docker-machine-vmwareworkstation
-
-Environment variables and default values:
-
-```
-CLI option	                        Environment variable	        Default
---vmwareworkstation-boot2docker-url	WORKSTATION_BOOT2DOCKER_URL	Latest boot2docker url
---vmwareworkstation-cpu-count	        WORKSTATION_CPU_COUNT	        1
---vmwareworkstation-disk-size	        WORKSTATION_DISK_SIZE	        20000
---vmwareworkstation-memory-size	        WORKSTATION_MEMORY_SIZE	        1024
---vmwareworkstation-ssh-user	        WORKSTATION_SSH_USER	        docker
---vmwareworkstation-ssh-password	WORKSTATION_SSH_PASSWORD	    tcuser
-```
-
-For example, creating a machine named `dev` with 2 CPUs and 4096 MB of memory. 
-> NOTE - do not forget `--native-ssh`
-
-```bash
-docker-machine --native-ssh create --driver=vmwareworkstation --vmwareworkstation-cpu-count 2 --vmwareworkstation-memory-size 4096 dev
-```
