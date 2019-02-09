@@ -31,6 +31,13 @@ Status: Downloaded newer image for evheniy/docker-data-science:latest
 
 ```
 ### 2nd Option - build image locally starting with given Dockerfile
+The file is pretty simple and easy to understand. See more at the links above in References.
+
+Runs as root, so easy to install additional Ubuntu or Python packages during work.
+
+#### TO DO:
+* fiddle a little with terminal in Jupyter.
+* install jupyterlab
 
 ```bash
 # Dockerfile
@@ -87,3 +94,19 @@ CMD ["jupyter", "notebook", "--allow-root", "--notebook-dir=/home/ubuntu/noteboo
 CMD ["jupyter", "notebook", "--allow-root", "--notebook-dir=/home/ubuntu/notebooks", "--ip='*'", "--port=8888", "--no-browser"]
 ```
 > * I also got warnings about building a non-windows image on a windows host. If one intents to put this docker image on a public server, maybe the permissions should be re-checked.
+
+#### Build
+Assuming you are in the same folder with `Dockerfile`. Otherwise use the `docker build` command options.
+```bash
+docker build -t toward-data-science .
+```
+
+#### Run
+Runs the stack with a local folder mounted under `/home/ubuntu/notebooks`.
+
+```bash
+docker run --name toward-data-science -p 8888:8888 --env="DISPLAY" -v "$PWD/notebooks:/home/ubuntu/notebooks" -d toward-data-science
+```
+* This assumes that a folder `notebook` exists in the working directory.
+* The command line options and ports can be modified. Read docker command reference. See also the previous `.md` file.
+* If run with `docker-machine` the actual IP of the virtual machine should be used (from `docker machine env` command). Otherwise it will run on `localhost`.
