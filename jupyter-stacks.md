@@ -90,13 +90,13 @@ According to https://github.com/pecigonzalo/docker-machine-vmwareworkstation
 Environment variables and default values:
 
 ```
-CLI option	    Environment variable	    Default
+CLI option	                        Environment variable	        Default
 --vmwareworkstation-boot2docker-url	WORKSTATION_BOOT2DOCKER_URL	Latest boot2docker url
---vmwareworkstation-cpu-count	WORKSTATION_CPU_COUNT	1
---vmwareworkstation-disk-size	WORKSTATION_DISK_SIZE	20000
---vmwareworkstation-memory-size	WORKSTATION_MEMORY_SIZE	1024
---vmwareworkstation-ssh-user	WORKSTATION_SSH_USER	docker
---vmwareworkstation-ssh-password	WORKSTATION_SSH_PASSWORD	tcuser
+--vmwareworkstation-cpu-count	        WORKSTATION_CPU_COUNT	        1
+--vmwareworkstation-disk-size	        WORKSTATION_DISK_SIZE	        20000
+--vmwareworkstation-memory-size	        WORKSTATION_MEMORY_SIZE	        1024
+--vmwareworkstation-ssh-user	        WORKSTATION_SSH_USER	        docker
+--vmwareworkstation-ssh-password	WORKSTATION_SSH_PASSWORD	    tcuser
 ```
 
 For example, creating a machine named `dev` with 2 CPUs and 4096 MB of memory. 
