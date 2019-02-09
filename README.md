@@ -9,7 +9,7 @@
 * `commands.txt` - clipboard file used for useful commands (in my setup)
 * `jupyter-docker-stacks.pdf` - PDF file downloaded from jupyter stacks official page
 * `README.md` - this file 
-* `docker-machine.md` - Docker setul (1)
+* `docker-machine.md` - docker-machine setup (1)
 * `jupyter-stacks.md` - (2)
 * `toward-data-science.md` - (3)
 * `Dockerfile` - the Dockerfile from (3)
