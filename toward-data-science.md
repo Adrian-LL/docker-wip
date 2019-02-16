@@ -13,7 +13,7 @@ So I found these on the internet:
 * http://www.science.smith.edu/dftwiki/index.php/Tutorial:_Docker_Anaconda_Python_--_4
 
 ## My setup
-### 1st Option - pull the image
+### 1st Option - pull the image made by Evheniy
 ```bash
 docker login
 docker pull evheniy/docker-data-science
@@ -39,8 +39,13 @@ Packages can be added and/or removed based on needs.
 For example emacs is included.
 
 #### TO DO:
-* fiddle a little with terminal in Jupyter.
-* install jupyterlab
+* ~~fiddle a little with terminal in Jupyter.~~ (actually one has to run `bash` instead of `sh` - still have to see where to launch it from....)
+* ~~install jupyterlab~~ It is installed. Should be launched from command line, or in the brouwser change the last part of URL after launching from `/tree?` (that is standard Jupyter) to `/lab?`.
+
+#### Install additional programs in Ubuntu and Python libraries 
+I updated the `Dockerfile` with more libraries for Data Science (these were not included initially).
+
+Some of them cannot be installed with `conda`, so I made a mix from `conda` and `pip`.
 
 ```bash
 # Dockerfile
@@ -52,7 +57,8 @@ RUN apt-get update && yes|apt-get upgrade
 RUN apt-get install -y emacs
 
 # Adding wget and bzip2
-RUN apt-get install -y wget bzip2
+# Adding also htop (useful) and screenfetch (just for fun)
+RUN apt-get install -y wget bzip2 htop screenfetch
 
 # Add sudo
 RUN apt-get -y install sudo
@@ -79,6 +85,12 @@ ENV PATH /home/ubuntu/anaconda3/bin:$PATH
 RUN conda update conda
 RUN conda update anaconda
 RUN conda update --all
+
+# Installing additional libraries
+RUN conda install tensorflow keras lightgbm
+
+# Additional libraries with pip
+RUN pip install osa xgboost catboost
 
 # Configuring access to Jupyter
 RUN mkdir /home/ubuntu/notebooks

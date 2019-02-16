@@ -1,3 +1,4 @@
+# Dockerfile
 # We will use Ubuntu for our image
 FROM ubuntu:latest
 
@@ -6,7 +7,8 @@ RUN apt-get update && yes|apt-get upgrade
 RUN apt-get install -y emacs
 
 # Adding wget and bzip2
-RUN apt-get install -y wget bzip2
+# Adding also htop (useful) and screenfetch (just for fun)
+RUN apt-get install -y wget bzip2 htop screenfetch
 
 # Add sudo
 RUN apt-get -y install sudo
@@ -34,6 +36,12 @@ RUN conda update conda
 RUN conda update anaconda
 RUN conda update --all
 
+# Installing additional libraries
+RUN conda install tensorflow keras lightgbm
+
+# Additional libraries with pip
+RUN pip install osa xgboost catboost
+
 # Configuring access to Jupyter
 RUN mkdir /home/ubuntu/notebooks
 RUN jupyter notebook --generate-config --allow-root
@@ -42,5 +50,5 @@ RUN echo "c.NotebookApp.password = u'sha1:6a3f528eec40:6e896b6e4828f525a6e20e541
 # Jupyter listens port: 8888
 EXPOSE 8888
 
-# Run Jupytewr notebook as Docker main process
+# Run Jupyter notebook as Docker main process
 CMD ["jupyter", "notebook", "--allow-root", "--notebook-dir=/home/ubuntu/notebooks", "--ip=0.0.0.0", "--port=8888", "--no-browser"]
