@@ -10,6 +10,13 @@ RUN apt-get install -y emacs
 # Adding also htop (useful) and screenfetch (just for fun)
 RUN apt-get install -y wget bzip2 htop screenfetch
 
+# Adding texlive (useful for conversion of .ipynb files to PDF or other formats)
+# RUN apt-get install -y texlive-xetex (this may be needed to be uncommented and run twice)
+RUN apt-get update --fix-missing
+ENV DEBIAN_FRONTEND=noninteractive 
+RUN apt-get install -y tzdata 
+RUN apt-get install -y texlive-xetex
+
 # Add sudo
 RUN apt-get -y install sudo
 
