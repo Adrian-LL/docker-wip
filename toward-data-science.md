@@ -130,4 +130,9 @@ My actual command:
 ```bash
  docker run  -it -p 10000:8888  -v "/Users:/home/ubuntu/notebooks"  -d toward-data-science
 ```
+This also works:
+```bash
+docker run  -it -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v "/Users:/home/ubuntu/notebooks"  -d toward-data-science
+```
+
 The local directory should be previously mounted in the VM. Stefan setup uses `C:\Users` as default.
