@@ -1,4 +1,4 @@
-# Docker installations - mainly for Jupyter
+# Docker installations - mainly for Jupyter & Data Science
 ## Content
 ### [1. Docker setup in Windows 10 with docker-machine (i.e. *not* Docker for Windows)](./docker-machine.md)
 ### [2. Creating a powerful docker machine for Data Science + Jupyter docker container](./jupyter-stacks.md)
