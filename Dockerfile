@@ -30,6 +30,7 @@ RUN chmod a+rwx /home/ubuntu/
 #RUN echo `pwd`
 
 # Anaconda installing
+# Note - to check it from time to time for updates and change accordingly
 RUN wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
 RUN bash Anaconda3-5.0.1-Linux-x86_64.sh -b
 RUN rm Anaconda3-5.0.1-Linux-x86_64.sh
@@ -44,10 +45,15 @@ RUN conda update anaconda
 RUN conda update --all
 
 # Installing additional libraries
+# Check if these are all you need
 RUN conda install tensorflow keras lightgbm
 
-# Additional libraries with pip
+# Additional libraries with pip 
+# These did not worked with `conda install`
 RUN pip install osa xgboost catboost
+# Maybe a newer numpy is needed.
+# But this may break some dependencies
+# RUN pip install numpy==1.15.0
 
 # Configuring access to Jupyter
 RUN mkdir /home/ubuntu/notebooks
