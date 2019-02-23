@@ -1,9 +1,12 @@
-# docker-wip for Jupyter + Docker
+# Docker preparation for Jupyter + Docker in Windows 10 *without* Hyper-V
 >Work In Progress for Docker
 
 >I intend to put here the steps I used for my docker setup in Windows 10 *without* using Docker for Windows (i.e. without using Hyper-V).
 
-> Using `docker-machine`
+> Using `docker-machine` and `VMWare Workstation`.
+
+> `docker-machine` should also work with `virtualbox`. The setup below is for vmware. Please note that if you have too many virtual machine types / providers something will definitely go wrong...
+
 ## 1. Installed according Stefan Scherer's article (here: https://stefanscherer.github.io/yes-you-can-docker-on-windows-7/)
 My setup:
 * Windows 10 Pro
@@ -40,6 +43,7 @@ mkdir D:\docker
 cmd /c mklink /J $env:USERPROFILE\.docker D:\docker
 
 ```
+### Create the container using `docker-machine`
 > NOTE(S)
 > * For some reason the windows `ssh` (based on open-ssh) does not really work , but `docker-machine` has a native ssh option, i.e. `--native-ssh`, so use it (you may have an error such as `Waiting for SSH to be available...` or `cannot establish SSH session(...)` or something like these.
 >
@@ -49,6 +53,11 @@ cmd /c mklink /J $env:USERPROFILE\.docker D:\docker
 docker-machine --native-ssh create -d vmwareworkstation default
 docker-machine env | iex
 
+```
+#### Virtualbox
+Use the specific command i.e. as below (use the `virtualbox` driver). Virtualbox should be installed.
+```bash
+docker-machine --native-ssh create --driver virtualbox default
 ```
 
 ## IP Address of the Virtual Machine
