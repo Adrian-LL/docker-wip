@@ -43,7 +43,7 @@ mkdir D:\docker
 cmd /c mklink /J $env:USERPROFILE\.docker D:\docker
 
 ```
-### Create the container using `docker-machine`
+### Create the machine for running containers using `docker-machine`
 > NOTE(S)
 > * For some reason the windows `ssh` (based on open-ssh) does not really work , but `docker-machine` has a native ssh option, i.e. `--native-ssh`, so use it (you may have an error such as `Waiting for SSH to be available...` or `cannot establish SSH session(...)` or something like these.
 >
