@@ -7,12 +7,15 @@ RUN apt-get update && yes|apt-get upgrade
 RUN apt-get install -y emacs
 
 # Adding wget and bzip2
-# Adding also htop (useful) and screenfetch (just for fun)
-RUN apt-get install -y wget bzip2 htop screenfetch
+# Adding also htop, mc (useful) and screenfetch (just for fun)
+RUN apt-get install -y wget bzip2 htop mc screenfetch
 
 # Adding texlive (useful for conversion of .ipynb files to PDF or other formats)
-# RUN apt-get install -y texlive-xetex (this may be needed to be uncommented and run twice)
+
+# the --fix-missing seems to be necessary
+# RUN apt-get install -y texlive-xetex # (this command may be needed / uncommented and run twice)
 RUN apt-get update --fix-missing
+# tzdata expects a lot of confirmations. With "noninteractive" below it will configure to UTC by default. 
 ENV DEBIAN_FRONTEND=noninteractive 
 RUN apt-get install -y tzdata 
 RUN apt-get install -y texlive-xetex
@@ -21,6 +24,9 @@ RUN apt-get install -y texlive-xetex
 RUN apt-get -y install sudo
 
 # Add user ubuntu with no password, add to sudo group
+# BEWARE, this can create security problems - it was designed to run locally
+# On the other hand this makes easier to install something if needed (although non-persistent)
+
 RUN adduser --disabled-password --gecos '' ubuntu
 RUN adduser ubuntu sudo
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
@@ -30,7 +36,7 @@ RUN chmod a+rwx /home/ubuntu/
 #RUN echo `pwd`
 
 # Anaconda installing
-# Note - to check it from time to time for updates and change accordingly
+# Note - to check the repository from time to time for updates and change accordingly
 RUN wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
 RUN bash Anaconda3-5.0.1-Linux-x86_64.sh -b
 RUN rm Anaconda3-5.0.1-Linux-x86_64.sh
@@ -53,6 +59,7 @@ RUN conda install tensorflow keras lightgbm
 RUN pip install osa xgboost catboost
 # Maybe a newer numpy is needed.
 # But this may break some dependencies
+# replace the version with the one you need
 # RUN pip install numpy==1.15.0
 
 # Configuring access to Jupyter
