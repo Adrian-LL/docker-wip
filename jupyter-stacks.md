@@ -1,8 +1,9 @@
-# Installing and Running a Jupyter Stack - TBU 
+# Installing and Running a Jupyter Stack 
 
-> NOTE - This is my setup, so running a docker with docker-machine under VMware Workstation. With Docker for Windows some things will slightly change (and easier to use)
+> NOTE - This is my setup, so running a docker with docker-machine under VMware Workstation. 
+With Docker for Windows some things will slightly change (and easier to use)
 
-## 1. Read the docs...(https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html)
+## 1. Read the docs from the site ...(https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html)
 
 ## 2. Get the desired stack from here, e.g. https://hub.docker.com/r/jupyter/datascience-notebook
 ## 3. Install it
