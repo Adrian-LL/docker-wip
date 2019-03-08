@@ -23,3 +23,7 @@
   * (https://chocolatey.org/packages/docker-machine-vmwareworkstation)
   * (https://chocolatey.org/packages/docker-compose) - `docker-compose` may be needed
   * (https://chocolatey.org/packages/docker-toolbox) - this is `docker-toolbox` for VirtualBox setups. *Please don't mix too many packages*
+* Read the docs about jupyter stacks (made by the jupyter team) - (https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html)
+* Select the stack from Docker Hub - (https://hub.docker.com/u/jupyter)
+* Evheniy Bystov image from towardsdatascience (https://towardsdatascience.com/docker-for-data-science-9c0ce73e8263)
+* A nice tutorial for using Docker and Anaconda (http://www.science.smith.edu/dftwiki/index.php/Tutorial:_Docker_Anaconda_Python_--_4)
