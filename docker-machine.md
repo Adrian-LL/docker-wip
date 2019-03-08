@@ -31,7 +31,7 @@ By default the machines will be created in a folder `.docker` in user profile ho
  * `%USERPROFILE%` if in cmd.
 
 ### Move folder to another disk / location
-To move on another disk create a junction first for `.docker` folder.
+To move on another disk *create a junction first* for `.docker` folder.
 Put whatever path you need. 
 
 I used and external SSD. The junction survives.
