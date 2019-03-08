@@ -15,14 +15,20 @@
 * `Dockerfile` - the Dockerfile from (3)
 
 ### Useful Links - some are specific to my setup, but all are worth a reading
+#### Docker-related
 * Yes, you can docker in Windows 7 (https://stefanscherer.github.io/yes-you-can-docker-on-windows-7/)
 * Details about docker-machine for wmware workstation (https://github.com/pecigonzalo/docker-machine-vmwareworkstation)
+* Docker commands cheatsheet (https://www.docker.com/sites/default/files/Docker_CheatSheet_08.09.2016_0.pdf)
+* Dockerfile reference: https://docs.docker.com/engine/reference/builder/
+* Docker Compose reference: https://docs.docker.com/compose/compose-file/
+
 * Chocolatey repository links: 
   * (https://chocolatey.org/packages/docker) - ignore the "deprecated"
   * (https://chocolatey.org/packages/docker-machine)
   * (https://chocolatey.org/packages/docker-machine-vmwareworkstation)
   * (https://chocolatey.org/packages/docker-compose) - `docker-compose` may be needed
   * (https://chocolatey.org/packages/docker-toolbox) - this is `docker-toolbox` for VirtualBox setups. *Please don't mix too many packages*
+
 * Read the docs about jupyter stacks (made by the jupyter team) - (https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html)
 * Select the stack from Docker Hub - (https://hub.docker.com/u/jupyter)
 * Evheniy Bystrov image from towardsdatascience (https://towardsdatascience.com/docker-for-data-science-9c0ce73e8263)
