@@ -28,4 +28,5 @@
 * Evheniy Bystov image from towardsdatascience (https://towardsdatascience.com/docker-for-data-science-9c0ce73e8263)
 * A nice tutorial for using Docker and Anaconda (http://www.science.smith.edu/dftwiki/index.php/Tutorial:_Docker_Anaconda_Python_--_4)
 #### Not included in my setup, but very useful
-* Torus : A Toolkit For Docker-First Data Science - (https://medium.com/manifold-ai/torus-a-toolkit-for-docker-first-data-science-bddcb4c97b52). This was not included in my setup
+* Orbyter (formerly known as Torus by ManifoldAI) : A Toolkit For Docker-First Data Science - (https://medium.com/manifold-ai/torus-a-toolkit-for-docker-first-data-science-bddcb4c97b52). 
+ * Orbyter github page (https://github.com/manifoldai/orbyter-docker)
