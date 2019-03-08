@@ -33,5 +33,7 @@
 * A nice tutorial for using Docker and Anaconda (http://www.science.smith.edu/dftwiki/index.php/Tutorial:_Docker_Anaconda_Python_--_4)
 #### Not included in my setup, but very useful
 * Orbyter (formerly known as Torus by ManifoldAI) : A Toolkit For Docker-First Data Science - (https://medium.com/manifold-ai/torus-a-toolkit-for-docker-first-data-science-bddcb4c97b52). 
- * Orbyter github page (https://github.com/manifoldai/orbyter-docker)
- * Docker - cookiecutter (https://github.com/manifoldai/docker-cookiecutter-data-science)
+  * Orbyter github page (https://github.com/manifoldai/orbyter-docker)
+  * Docker - cookiecutter (https://github.com/manifoldai/docker-cookiecutter-data-science)
+  
+
