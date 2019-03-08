@@ -21,14 +21,12 @@
 * Docker commands cheatsheet (https://www.docker.com/sites/default/files/Docker_CheatSheet_08.09.2016_0.pdf)
 * Dockerfile reference: https://docs.docker.com/engine/reference/builder/
 * Docker Compose reference: https://docs.docker.com/compose/compose-file/
-
 * Chocolatey repository links: 
   * (https://chocolatey.org/packages/docker) - ignore the "deprecated"
   * (https://chocolatey.org/packages/docker-machine)
   * (https://chocolatey.org/packages/docker-machine-vmwareworkstation)
   * (https://chocolatey.org/packages/docker-compose) - `docker-compose` may be needed
   * (https://chocolatey.org/packages/docker-toolbox) - this is `docker-toolbox` for VirtualBox setups. *Please don't mix too many packages*
-
 * Read the docs about jupyter stacks (made by the jupyter team) - (https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html)
 * Select the stack from Docker Hub - (https://hub.docker.com/u/jupyter)
 * Evheniy Bystrov image from towardsdatascience (https://towardsdatascience.com/docker-for-data-science-9c0ce73e8263)
@@ -36,3 +34,4 @@
 #### Not included in my setup, but very useful
 * Orbyter (formerly known as Torus by ManifoldAI) : A Toolkit For Docker-First Data Science - (https://medium.com/manifold-ai/torus-a-toolkit-for-docker-first-data-science-bddcb4c97b52). 
  * Orbyter github page (https://github.com/manifoldai/orbyter-docker)
+ * Docker - cookiecutter (https://github.com/manifoldai/docker-cookiecutter-data-science)
