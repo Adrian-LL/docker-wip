@@ -16,3 +16,6 @@
 
 ### Useful Links
 * Yes, you can docker in Windows 7 (https://stefanscherer.github.io/yes-you-can-docker-on-windows-7/)
+* Details about docker-machine for wmware workstation (https://github.com/pecigonzalo/docker-machine-vmwareworkstation)
+* Chocolatey repository links 
+  * (https://chocolatey.org/packages/docker-machine)
