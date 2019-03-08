@@ -21,4 +21,5 @@
   * (https://chocolatey.org/packages/docker) - ignore the "deprecated"
   * (https://chocolatey.org/packages/docker-machine)
   * (https://chocolatey.org/packages/docker-machine-vmwareworkstation)
-  * (https://chocolatey.org/packages/docker-compose) - docker-compose may be needed
+  * (https://chocolatey.org/packages/docker-compose) - `docker-compose` may be needed
+  * (https://chocolatey.org/packages/docker-toolbox) - this is `docker-toolbox` for VirtualBox setups. *Please don't mix too many packages*
