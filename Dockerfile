@@ -37,6 +37,8 @@ RUN chmod a+rwx /home/ubuntu/
 
 # Anaconda installing
 # Note - to check the repository from time to time for updates and change accordingly
+# in 2019-03-08 was Anaconda2-5.3.1-Linux-x86_64.sh
+# Check it, there may be some incompatibilities.
 RUN wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
 RUN bash Anaconda3-5.0.1-Linux-x86_64.sh -b
 RUN rm Anaconda3-5.0.1-Linux-x86_64.sh
