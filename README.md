@@ -14,8 +14,11 @@
 * `toward-data-science.md` - (3)
 * `Dockerfile` - the Dockerfile from (3)
 
-### Useful Links
+### Useful Links - some are specific to my setup
 * Yes, you can docker in Windows 7 (https://stefanscherer.github.io/yes-you-can-docker-on-windows-7/)
 * Details about docker-machine for wmware workstation (https://github.com/pecigonzalo/docker-machine-vmwareworkstation)
-* Chocolatey repository links 
+* Chocolatey repository links: 
+  * (https://chocolatey.org/packages/docker) - ignore the "deprecated"
   * (https://chocolatey.org/packages/docker-machine)
+  * (https://chocolatey.org/packages/docker-machine-vmwareworkstation)
+  * (https://chocolatey.org/packages/docker-compose) - docker-compose may be needed
