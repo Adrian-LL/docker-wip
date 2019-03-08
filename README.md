@@ -13,3 +13,6 @@
 * `jupyter-stacks.md` - (2)
 * `toward-data-science.md` - (3)
 * `Dockerfile` - the Dockerfile from (3)
+
+### Useful Links
+* Yes, you can docker in Windows 7 (https://stefanscherer.github.io/yes-you-can-docker-on-windows-7/)
