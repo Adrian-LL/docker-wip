@@ -2,16 +2,18 @@
 
 docker-machine --native-ssh create --driver=vmwareworkstation --vmwareworkstation-cpu-count 8 --vmwareworkstation-disk-size 40960 --vmwareworkstation-memory-size 24576 tensor
 
-# run toward-data-science container with Jupyter Lab enabled. However it will start as jupyter notebook. The directory should be changed from /tree? to /lab?
+# Run toward-data-science container with Jupyter Lab enabled. 
+# However it will start as jupyter notebook. 
+# The directory should be changed manually from `/tree?` to `/lab?`
 docker run  -it -p 10000:8888  -e JUPYTER_ENABLE_LAB=yes -v "/Users/aludo:/home/ubuntu/notebooks"  -d toward-data-science
 
-# run toward-data-science in jupyter mode
+# Run toward-data-science in jupyter mode
 docker run  -it -p 10000:8888  -v "/Users/aludo:/home/ubuntu/notebooks"  -d toward-data-science
 
 # # kaggle/python image - from the original documentation
 docker run -v $PWD:/tmp/working -w=/tmp/working -p 8888:8888 --rm -it kaggle/python jupyter notebook --no-browser --ip="0.0.0.0" --notebook-dir=/tmp/working/src
 
-# jupyterlab from original documentation
+# jupyterlab from original Jupyter stacks documentation
 docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home/jovyan/work jupyter/datascience-notebook
 
 # jupyterlab tensorflow for my setup
