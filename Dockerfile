@@ -1,7 +1,8 @@
 # Dockerfile
 # We will use Ubuntu for our image
 FROM ubuntu:latest
-
+# Adds metadata to the image as a key value pair example 
+# LABEL version="1.0"
 LABEL maintainer="Adrian Ludosan <aludosan@hotmail.com>"
 
 # Updating Ubuntu packages
@@ -11,7 +12,12 @@ RUN apt-get update && yes|apt-get upgrade
 # RUN apt-get install -y emacs
 
 # Adding wget, bzip2, htop, mc (useful) and screenfetch (just for fun)
-RUN apt-get install -y wget bzip2 htop mc screenfetch
+RUN apt-get install -y \
+  wget \
+  bzip2 \
+  htop \
+  mc \
+  screenfetch
 
 # Adding texlive (useful for conversion of .ipynb files to PDF or other formats)
 # NOTE: the --fix-missing seems to be necessary
