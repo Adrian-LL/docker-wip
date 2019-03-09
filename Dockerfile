@@ -2,20 +2,24 @@
 # We will use Ubuntu for our image
 FROM ubuntu:latest
 
+LABEL maintainer="Adrian Ludosan <aludosan@hotmail.com>"
+
 # Updating Ubuntu packages
 RUN apt-get update && yes|apt-get upgrade
-RUN apt-get install -y emacs
 
-# Adding wget and bzip2
-# Adding also htop, mc (useful) and screenfetch (just for fun)
+# Emacs - if neeeded
+# RUN apt-get install -y emacs
+
+# Adding wget, bzip2, htop, mc (useful) and screenfetch (just for fun)
 RUN apt-get install -y wget bzip2 htop mc screenfetch
 
 # Adding texlive (useful for conversion of .ipynb files to PDF or other formats)
+# NOTE: the --fix-missing seems to be necessary
 
-# the --fix-missing seems to be necessary
 # RUN apt-get install -y texlive-xetex # (this command may be needed / uncommented and run twice)
 RUN apt-get update --fix-missing
-# tzdata expects a lot of confirmations. With "noninteractive" below it will configure to UTC by default. 
+# tzdata expects a lot of confirmations. 
+# With "noninteractive" as below it will configure to UTC by default. 
 ENV DEBIAN_FRONTEND=noninteractive 
 RUN apt-get install -y tzdata 
 RUN apt-get install -y texlive-xetex
@@ -37,8 +41,7 @@ RUN chmod a+rwx /home/ubuntu/
 
 # Anaconda installing
 # Note - to check the repository from time to time for updates and change accordingly
-# in 2019-03-08 was Anaconda2-5.3.1-Linux-x86_64.sh
-# Check it, there may be some incompatibilities.
+# 2019-03-08 - Anaconda2-5.3.1-Linux-x86_64.sh. Check it, there may be some incompatibilities.
 RUN wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
 RUN bash Anaconda3-5.0.1-Linux-x86_64.sh -b
 RUN rm Anaconda3-5.0.1-Linux-x86_64.sh
