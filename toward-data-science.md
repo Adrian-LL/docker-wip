@@ -33,7 +33,10 @@ Status: Downloaded newer image for evheniy/docker-data-science:latest
 
 ```
 ## 2nd Option - build image locally starting with given Dockerfile
-The file is pretty simple and easy to understand. See more at the links above in References.
+### 2nd Option variant - just do `docker pull aludosan/toward-data-science`. 
+(This will pull the image created with the `Dockerfile` below. It's pretty big, aroung 11 GiB.)
+
+The `Dockerfile` is pretty simple and easy to understand. See more at the links above in References.
 
 The configuration below runs as `root`, so it's easy to install additional Ubuntu or Python packages during work.
 
