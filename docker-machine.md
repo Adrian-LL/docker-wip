@@ -92,6 +92,10 @@ docker-machine stop
 docker build -t friendlyhello .  # Create image using this directory's Dockerfile
 docker run -p 4000:80 friendlyhello  # Run "friendlyname" mapping port 4000 to 80
 docker run -d -p 4000:80 friendlyhello         # Same thing, but in detached mode
+docker logs <container_id>                     # Seeing logs of the container
+docker exec -it <container_id> bash # Going inside container while it's running
+docker ps -a                                   # List all docker containers
+docker ps                                    # List currently running containers
 docker container ls                                # List all running containers
 docker container ls -a             # List all containers, even those not running
 docker container stop <hash>           # Gracefully stop the specified container
@@ -99,7 +103,9 @@ docker container kill <hash>         # Force shutdown of the specified container
 docker container rm <hash>        # Remove specified container from this machine
 docker container rm $(docker container ls -a -q)         # Remove all containers
 docker image ls -a                             # List all images on this machine
+docker images                                  # List all images
 docker image rm <image id>            # Remove specified image from this machine
+docker rmi --force <image_id>         # Remove (delete) image from this machine
 docker image rm $(docker image ls -a -q)   # Remove all images from this machine
 docker login             # Log in this CLI session using your Docker credentials
 docker tag <image> username/repository:tag  # Tag <image> for upload to registry
