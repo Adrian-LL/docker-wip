@@ -35,5 +35,7 @@
 * Orbyter (formerly known as Torus by ManifoldAI) : A Toolkit For Docker-First Data Science - (https://medium.com/manifold-ai/torus-a-toolkit-for-docker-first-data-science-bddcb4c97b52). 
   * Orbyter github page (https://github.com/manifoldai/orbyter-docker)
   * Docker - cookiecutter (https://github.com/manifoldai/docker-cookiecutter-data-science)
+#### A gallery of interesting Jupyter Notebooks
+* Here: https://github.com/jupyter/jupyter/wiki/A-gallery-of-interesting-Jupyter-Notebooks
   
 
