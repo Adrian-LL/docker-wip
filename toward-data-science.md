@@ -16,6 +16,8 @@ Based on those, a better data science image can be built (as the skeleton `Docke
 
 
 ## 1st Option - pull the image made by Evheniy
+Please note that my image is a little different. I added some additional modules and software.
+
 ```bash
 docker login
 docker pull evheniy/docker-data-science
