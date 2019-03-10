@@ -37,5 +37,8 @@
   * Docker - cookiecutter (https://github.com/manifoldai/docker-cookiecutter-data-science)
 #### A gallery of interesting Jupyter Notebooks
 * Here: https://github.com/jupyter/jupyter/wiki/A-gallery-of-interesting-Jupyter-Notebooks
-  
+#### A collection of common dockerized services for a company is available here.  
+* https://github.com/Trantect/docker-compose.yamls
+#### Useful Docker cheatsheet
+* https://github.com/wsargent/docker-cheat-sheet
 
