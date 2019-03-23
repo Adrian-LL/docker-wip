@@ -4,7 +4,6 @@
 ### [2. Creating a powerful docker machine for Data Science + Jupyter docker container](./jupyter-stacks.md)
 ### [3. Another (more powerfull and all-inclusive) container for data Science](./toward-data-science.md)
 
-
 ### Files in this folder
 * `commands.txt` - clipboard file used for useful commands (in my setup)
 * `jupyter-docker-stacks.pdf` - PDF file downloaded from jupyter stacks official page
