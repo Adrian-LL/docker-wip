@@ -166,3 +166,6 @@ docker run  -it -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v "/Users:/home/ubuntu/
 ```
 
 The local directory should be previously mounted in the VM. Stefan setup uses `C:\Users` as default.
+**NOTE**
+The default password for jupyter is *root*
+
