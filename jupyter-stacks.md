@@ -22,7 +22,7 @@ Otherwise just do `docker run` command, if the stack is not found locally the `l
 * It then starts an *ephemeral* container running a Jupyter Notebook server and exposes the server on host port 10000. 
 * The command mounts the current working directory on the host as `/home/jovyan/work` in the container. 
 * The server logs appear in the terminal. 
-* Visiting http://<hostname>:10000/?token=<token> in a browser loads JupyterLab, where hostname is the name of the computer running docker and token is the secret token printed in the console. Docker destroys the container after notebook server exit, but any files written to `~/work` in the container remain intact on the host.:
+* Visiting http://x.y.w.z:10000/?token=<token> in a browser loads JupyterLab, where x.y.w.z is the IP address the running docker-machine and token is the secret token printed in the console. Docker destroys the container after notebook server exit, but any files written to `~/work` in the container remain intact on the host.:
 
 ```ps
 docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home/jovyan/work jupyter/datascience-notebook
