@@ -169,5 +169,6 @@ The local directory should be previously mounted in the VM. Stefan setup uses `C
 
 **NOTE**
 
-The default password for jupyter is *root*
+### The default password for jupyter is *root*
+
 
