@@ -2,7 +2,7 @@
 # We will use Ubuntu for our image
 FROM ubuntu:latest
 # Adds metadata to the image as a key value pair example 
-# LABEL version="1.0"
+LABEL version="1.0"
 LABEL maintainer="Adrian Ludosan <aludosan@hotmail.com>"
 
 # Updating Ubuntu packages
