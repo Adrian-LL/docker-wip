@@ -15,8 +15,8 @@ So I found these on the internet:
 Based on those, a better data science image can be built (as the skeleton `Dockerfile` was already provided).
 
 
-## 1st Option - pull the image made by Evheniy
-Please note that my image is a little different. I added some additional modules and software.
+## 1st Option - pull the image made by Evheniy - or other available images from docker.io
+(Please note that my image is a little different. I added some additional modules and software.)
 
 ```bash
 docker login
@@ -34,15 +34,17 @@ Digest: sha256:e07b9ca98ac1eeb1179dbf0e0bbcebd87701f8654878d6d8ce164d71746964d1
 Status: Downloaded newer image for evheniy/docker-data-science:latest
 
 ```
-## 2nd Option - build image locally starting with given Dockerfile
+## 2nd Option - build image locally starting with given Dockerfile - as described below
+
 ### 2nd Option variant - just do `docker pull aludosan/toward-data-science`. 
-(This will pull the image created with the `Dockerfile` below. It's pretty big, aroung 11 GiB.)
+(This will pull the image created with the `Dockerfile` below. It's pretty big, around 8 GiB.)
 
 The `Dockerfile` is pretty simple and easy to understand. See more at the links above in References.
 
 The configuration below runs as `root`, so it's easy to install additional Ubuntu or Python packages during work.
 
-> NOTE: Packages can be added and/or removed based on needs during the session, using the Jupyter terminal. But keep in mind that in this way they will not be persistent.
+> NOTE: Packages can be added and/or removed based on needs during the session, using the Jupyter terminal. 
+> But keep in mind that in this way they will not be persistent.
 
 ### TO DO:
 * ~~fiddle a little with terminal in Jupyter.~~ (actually one has to run `bash` instead of `sh` - still have to see where to launch it from....)
@@ -64,13 +66,15 @@ Some of them cannot be installed with `conda`, so I made a mix from `conda` and 
 #### Also for Linux (Ubuntu)
 * `texlive-xetex` (here I got into some missing packages and had to use `apt-get update --fix-missing`)
 * `htop`
-* `screenfetch` (just for fun, not actually needed)
+* `screenfetch` and 'neofetch' (just for fun, not actually needed)
 
 Please note that `tzdata` package is hidden in there, and its installation is non-interactive, so one have to use `ENV DEBIAN_FRONTEND=noninteractive` followed by `RUN apt-get install -y tzdata `. This will default to UTC zone.
 
 
 ```bash
 # Dockerfile
+# Updated 2020-09-02
+#
 # We will use Ubuntu for our image
 FROM ubuntu:latest
 
@@ -103,9 +107,11 @@ RUN chmod a+rwx /home/ubuntu/
 #RUN echo `pwd`
 
 # Anaconda installing
-RUN wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
-RUN bash Anaconda3-5.0.1-Linux-x86_64.sh -b
-RUN rm Anaconda3-5.0.1-Linux-x86_64.sh
+# Latest one in 2020-09-02 - `Anaconda3-2020.07-Linux-x86_64.sh`
+# Includes Python 3.8.3
+RUN wget https://repo.continuum.io/archive/Anaconda3-2020.07-Linux-x86_64.sh
+RUN bash Anaconda3-2020.07-Linux-x86_64.sh
+RUN rm Anaconda3-2020.07-Linux-x86_64.sh
 
 # Set path to conda
 #ENV PATH /root/anaconda3/bin:$PATH
@@ -147,7 +153,7 @@ docker build -t toward-data-science .
 ```
 
 #### Run
-Runs the stack with a local folder mounted under `/home/ubuntu/notebooks`.
+Example command that runs the stack with a local folder mounted under `/home/ubuntu/notebooks`. But better *see below*
 
 ```bash
 docker run --name toward-data-science -p 8888:8888 --env="DISPLAY" -v "$PWD/notebooks:/home/ubuntu/notebooks" -d toward-data-science
@@ -156,7 +162,7 @@ docker run --name toward-data-science -p 8888:8888 --env="DISPLAY" -v "$PWD/note
 * The command line options and ports can be modified. Read docker command reference. See also the previous `.md` file.
 * If run with `docker-machine` the actual IP of the virtual machine should be used (from `docker machine env` command). Otherwise it will run on `localhost`. Also `--env="DISPLAY"` may be dropped in this case.
 
-My actual command:
+#### My actual command:
 ```bash
  docker run  -it -p 10000:8888  -v "/Users:/home/ubuntu/notebooks"  -d toward-data-science
 ```
