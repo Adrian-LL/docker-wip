@@ -169,7 +169,10 @@ The local directory should be previously mounted in the VM. Stefan setup uses `C
 
 **NOTES**
 
-### the URL for jupyter will be something like http://192.168.109.129:10000/lab?#notebooks 
+### The URL for jupyter will be something like http://192.168.109.129:10000/lab?#notebooks 
+ 
+ Use docker commands to find the IP address of the machine
+
 ### The default password for jupyter is *root*
 
 
